@@ -1,0 +1,33 @@
+enable
+configure terminal
+
+hostname arista
+
+interface Management1
+   ip address 192.168.218.183/24
+exit
+
+radius-server host 192.168.218.224 key Kc123456789
+
+aaa authentication login default group radius local
+aaa authorization exec default group radius local
+
+no ip access-list Example1
+
+ip access-list Example1
+   10 permit tcp host 192.168.218.204 host 192.168.218.183 eq ssh
+   20 permit udp host 192.168.218.183 host 192.168.218.224 eq radius
+   30 permit udp host 192.168.218.183 host 192.168.218.224 eq radius-acct
+   40 deny tcp any host 192.168.218.183 eq ssh
+   50 permit ip any any
+exit
+
+no ip route 0.0.0.0/0 192.168.101.1
+ip route 0.0.0.0/0 192.168.218.2
+
+management ssh
+   ip access-group Example1 in
+exit
+
+end
+write memory
