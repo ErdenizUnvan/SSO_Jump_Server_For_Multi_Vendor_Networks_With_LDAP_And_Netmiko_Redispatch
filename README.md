@@ -1,4 +1,4 @@
-# SSO_Jump_Server_For_Multi_Vendor_Networks_With_LDAP_And_Netmiko_Redispatch
+# SSO_Jump_Server_For_Multi_Vendor_Networks_Via_Netmiko_Redispatch
 
 Part 1: Multi-Vendor SSO LDAP Lab Pnet Part 1 Topology Introduction
 https://www.youtube.com/watch?v=5ZuPdDxXYuk
